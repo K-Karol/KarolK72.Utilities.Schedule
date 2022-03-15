@@ -22,13 +22,6 @@ public class Scheduler : IDisposable
     private Exception _threadException;
     private bool _cancellationRequested = false;
     private int _executionThreadCount = 4;
-
-    /* Unmerged change from project 'KarolK72.Utilities.Schedule (net461)'
-    Before:
-        private event Events.ThreadStatusChangedHandler _threadStatusChanged;
-    After:
-        private event Utilities.Schedule.Events.ThreadStatusChangedHandler _threadStatusChanged;
-    */
     private event ThreadStatusChangedHandler _threadStatusChanged;
     private EventWaitHandle _waitHandle = new AutoResetEvent(false);
     //private CancellationToken _cancellationToken;
@@ -159,13 +152,6 @@ public class Scheduler : IDisposable
         get => _ExecutionThreads;
     }
 
-
-    /* Unmerged change from project 'KarolK72.Utilities.Schedule (net461)'
-    Before:
-        public event Events.ThreadStatusChangedHandler ThreadStatusChanged
-    After:
-        public event Utilities.Schedule.Events.ThreadStatusChangedHandler ThreadStatusChanged
-    */
     public event ThreadStatusChangedHandler ThreadStatusChanged
     {
         add
@@ -184,22 +170,9 @@ public class Scheduler : IDisposable
         }
     }
 
-
-    /* Unmerged change from project 'KarolK72.Utilities.Schedule (net461)'
-    Before:
-        public void AddExecutionThreadStatusChangedHandler(Events.ThreadStatusChangedHandler handler)
-    After:
-        public void AddExecutionThreadStatusChangedHandler(Utilities.Schedule.Events.ThreadStatusChangedHandler handler)
-    */
     public void AddExecutionThreadStatusChangedHandler(ThreadStatusChangedHandler handler)
         => _ExecutionThreads.ForEach(et => et.ThreadStatusChanged += handler);
 
-    /* Unmerged change from project 'KarolK72.Utilities.Schedule (net461)'
-    Before:
-        public void RemoveExecutionthreadStatusChangedHandler(Events.ThreadStatusChangedHandler handler)
-    After:
-        public void RemoveExecutionthreadStatusChangedHandler(Utilities.Schedule.Events.ThreadStatusChangedHandler handler)
-    */
     public void RemoveExecutionthreadStatusChangedHandler(ThreadStatusChangedHandler handler)
         => _ExecutionThreads.ForEach(et => et.ThreadStatusChanged -= handler);
 
