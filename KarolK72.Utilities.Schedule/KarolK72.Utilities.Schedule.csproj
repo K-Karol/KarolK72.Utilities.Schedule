@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	  <PackageOutputPath>$(SolutionDir)Packages_$(Configuration)\</PackageOutputPath>
+    <Authors>Karol Kierzkowski</Authors>
+    <Description>This package contains code to facilitate the process of executing many jobs over a range of many threads.
+It also contains important abstractions IJobScheduler which allows for creating an implementation of a Job Scheduler class.
+WIP.</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <BaseOutputPath>$(ProjectDirectory)bin</BaseOutputPath>
+    <BaseIntermediateOutputPath>$(ProjectDirectory)obj</BaseIntermediateOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Info\**" />
+    <EmbeddedResource Remove="Info\**" />
+    <None Remove="Info\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="CronSchedule.cs" />
+    <Compile Remove="IJobExecution.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0" />
+  </ItemGroup>
+
+</Project>
